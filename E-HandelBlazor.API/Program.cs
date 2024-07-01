@@ -1,3 +1,9 @@
+using E_Handel.Repositories.DBContext;
+using E_Handel.Repositories.Implementation;
+using E_Handel.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,15 +13,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<DbEHandelContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
+});
+
+builder.Services.AddTransient(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+builder.Services.AddScoped<ISaleRepo, SaleRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseAuthorization();
 
 app.MapControllers();

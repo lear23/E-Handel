@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using E_Handel.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace E_Handel.Models;
+namespace E_Handel.Repositories.DBContext;
 
 public partial class DbEHandelContext : DbContext
 {
@@ -25,9 +25,7 @@ public partial class DbEHandelContext : DbContext
 
     public virtual DbSet<SalesDatail> SalesDatails { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(local); Database=DbE_Handel; Trusted_Connection=True; TrustServerCertificate=True;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

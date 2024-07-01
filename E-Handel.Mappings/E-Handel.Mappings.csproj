@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\E-Handel.Dtos\E-Handel.Dtos.csproj" />
+    <ProjectReference Include="..\E-Handel.Models\E-Handel.Models.csproj" />
+  </ItemGroup>
+
 </Project>

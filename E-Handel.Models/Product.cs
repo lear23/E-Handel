@@ -25,5 +25,5 @@ public partial class Product
 
     public virtual Category? IdCategoryNavigation { get; set; }
 
-    public virtual ICollection<SalesDatail> SalesDatails { get; set; } = new List<SalesDatail>();
+    public virtual ICollection<SalesDetail> SalesDatails { get; set; } = new List<SalesDetail>();
 }

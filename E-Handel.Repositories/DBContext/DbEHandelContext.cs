@@ -23,7 +23,7 @@ public partial class DbEHandelContext : DbContext
 
     public virtual DbSet<Sale> Sales { get; set; }
 
-    public virtual DbSet<SalesDatail> SalesDatails { get; set; }
+    public virtual DbSet<SalesDetail> SalesDatails { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
@@ -107,7 +107,7 @@ public partial class DbEHandelContext : DbContext
                 .HasConstraintName("FK__Sale__IdCustomer__412EB0B6");
         });
 
-        modelBuilder.Entity<SalesDatail>(entity =>
+        modelBuilder.Entity<SalesDetail>(entity =>
         {
             entity.HasKey(e => e.IdSalesDetails).HasName("PK__SalesDat__F75DCFDE65073601");
 

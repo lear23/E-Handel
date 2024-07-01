@@ -1,3 +1,4 @@
+using E_Handel.Mappings;
 using E_Handel.Repositories.DBContext;
 using E_Handel.Repositories.Implementation;
 using E_Handel.Repositories.Interfaces;
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<DbEHandelContext>(options =>
 
 builder.Services.AddTransient(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 builder.Services.AddScoped<ISaleRepo, SaleRepo>();
+builder.Services.AddAutoMapper(typeof(AutomapperProfile));
+
 
 var app = builder.Build();
 

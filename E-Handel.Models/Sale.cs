@@ -15,5 +15,5 @@ public partial class Sale
 
     public virtual Customer? IdCustomerNavigation { get; set; }
 
-    public virtual ICollection<SalesDatail> SalesDatails { get; set; } = new List<SalesDatail>();
+    public virtual ICollection<SalesDetail> SalesDatails { get; set; } = new List<SalesDetail>();
 }

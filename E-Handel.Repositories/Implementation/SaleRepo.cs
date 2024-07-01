@@ -25,7 +25,7 @@ namespace E_Handel.Repositories.Implementation
                 try
                 {                   
 
-                    foreach (SalesDatail ds in model.SalesDatails)
+                    foreach (SalesDetail ds in model.SalesDatails)
                     {
                         Product product_find = await _dbContext.Products.Where(p => p.IdProduct == ds.IdProduct).FirstAsync();
 

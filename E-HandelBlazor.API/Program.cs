@@ -2,6 +2,8 @@ using E_Handel.Mappings;
 using E_Handel.Repositories.DBContext;
 using E_Handel.Repositories.Implementation;
 using E_Handel.Repositories.Interfaces;
+using E_Handel.Services.Implementations;
+using E_Handel.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 
@@ -21,7 +23,14 @@ builder.Services.AddDbContext<DbEHandelContext>(options =>
 
 builder.Services.AddTransient(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 builder.Services.AddScoped<ISaleRepo, SaleRepo>();
+
 builder.Services.AddAutoMapper(typeof(AutomapperProfile));
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ISaleService, SaleService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 
 var app = builder.Build();

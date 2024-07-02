@@ -1,7 +1,7 @@
 ﻿
 namespace E_Handel.Dtos;
 
-public class DashBoardDto
+public class DashboardDto
 {
     public string? TotalIncome { get; set; }
     public int TotalSale { get; set; }

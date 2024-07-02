@@ -108,7 +108,7 @@ public class ProductService : IProductService
         }
     }
 
-    public async Task<List<ProductDto>> List(string rol, string search)
+    public async Task<List<ProductDto>> List(string search)
     {
         try
         {

@@ -33,13 +33,28 @@ builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 
+builder.Services.AddCors(options=>
+{
+    options.AddPolicy("NewPolicy", app =>
+    {
+        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+
+    });
+    
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseCors("NewPolicy");
 app.UseAuthorization();
+
+
 
 app.MapControllers();
 

@@ -7,6 +7,6 @@ namespace E_Handel.Services.Interfaces;
 public interface IDashboardService
 {
 
-    DashBoardDto Summary();
+    DashboardDto Summary();
 
 }

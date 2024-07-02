@@ -1,6 +1,0 @@
-@E_HandelBlazor.API_HostAddress = http://localhost:5126
-
-GET {{E_HandelBlazor.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

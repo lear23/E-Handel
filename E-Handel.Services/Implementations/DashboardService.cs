@@ -42,11 +42,11 @@ public class DashboardService(ISaleRepo saleRepo, IGenericRepo<Customer> userRep
         return total;
     }
 
-    public DashBoardDto Summary()
+    public DashboardDto Summary()
     {
         try
         {
-            DashBoardDto dto = new DashBoardDto() 
+            DashboardDto dto = new DashboardDto() 
             {
                 TotalIncome = Income(),
                 TotalSale = Sales(),

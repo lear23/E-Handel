@@ -1,5 +1,6 @@
 ﻿using E_Handel.Dtos;
 using E_HandelBlazor.Services.Interfaces;
+using System.Reflection;
 
 namespace E_HandelBlazor.Services.Models;
 
@@ -15,28 +16,33 @@ public class CustomerModel(HttpClient httpClient) : ICustomerModel
         var result = await response.Content.ReadFromJsonAsync<ResponseDto<SessionDto>>();
         return result!;
     }
-    public Task<ResponseDto<CustomerDto>> Create(CustomerDto model)
+    public async Task<ResponseDto<CustomerDto>> Create(CustomerDto model)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsJsonAsync("Customer/create", model);
+        var result = await response.Content.ReadFromJsonAsync<ResponseDto<CustomerDto>>();
+        return result!;
     }
 
-    public Task<ResponseDto<bool>> Delete(int id)
+    public async Task<ResponseDto<bool>> Delete(int id)
     {
-        throw new NotImplementedException();
+     return await _httpClient.DeleteFromJsonAsync<ResponseDto<bool>>($"Customer/Delete/{id}");
+        
     }
 
-    public Task<ResponseDto<CustomerDto>> Get(int id)
+    public async Task<ResponseDto<CustomerDto>> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<ResponseDto<CustomerDto>>($"Customer/Get/{id}");
     }
 
-    public Task<ResponseDto<List<CustomerDto>>> List(string rol, string search)
+    public async Task<ResponseDto<List<CustomerDto>>> List(string rol, string search)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<ResponseDto<List<CustomerDto>>>($"Customer/list/{rol}/{search}");
     }
 
-    public Task<ResponseDto<bool>> Update(CustomerDto model)
+    public async Task<ResponseDto<bool>> Update(CustomerDto model)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsJsonAsync("Customer/Update", model);
+        var result = await response.Content.ReadFromJsonAsync<ResponseDto<bool>>();
+        return result!;
     }
 }

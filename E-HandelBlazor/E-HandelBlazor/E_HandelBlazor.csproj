@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\E-Handel.Services\E-Handel.Services.csproj" />
     <ProjectReference Include="..\E-HandelBlazor.Client\E_HandelBlazor.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.5" />
   </ItemGroup>

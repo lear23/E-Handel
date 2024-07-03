@@ -1,5 +1,10 @@
+using Blazored.LocalStorage;
+using Blazored.Toast;
+
 using E_HandelBlazor.Client.Pages;
 using E_HandelBlazor.Components;
+using E_HandelBlazor.Services.Models;
+using E_HandelBlazor.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +12,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddBlazoredToast();
+
+builder.Services.AddScoped<ICustomerModel, CustomerModel>();
+builder.Services.AddScoped<ICategoyService, CategoryModel>();
+builder.Services.AddScoped<IProductService, ProductModel>();
+builder.Services.AddScoped<IShoppingCart, ShoppingCartModel>();
+builder.Services.AddScoped<ISaleService, SaleModel>();
+builder.Services.AddScoped<IDashboardService, DashboardModel>();
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

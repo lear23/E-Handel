@@ -1,28 +1,148 @@
-﻿
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" runat="server" href="#">E-Handel</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="@NavMenuCssClass navbar-collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+
+                <li class="nav-item" b-test><NavLink class="nav-link" href="dashboard"> Dashboard</NavLink></li>
+                <li class="nav-item"><NavLink class="nav-link" href="Customers"> Customer</NavLink></li>
+                <li class="nav-item"><NavLink class="nav-link" href="categories"> Categories</NavLink></li>
+                <li class="nav-item"><NavLink class="nav-link" href="products"> Products</NavLink></li>
+
+                <li class="nav-item"><NavLink class="nav-link" href="catalogue"> Store</NavLink></li>
+            </ul>
 
 
-<div  onclick="document.querySelector('.navbar-toggler').click()">
-    <nav >
-        <div class="toca">
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-                </NavLink>
-            </div>
+            <span class="navbar-text me-3">
+                admins@example.com
+            </span>
 
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="counter">
-                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-                </NavLink>
-            </div>
+            <a class="btn btn-outline-dark ms-auto ms-md-0 me-3" href="/cart">
+                <i class="bi-cart-fill me-1"></i>
+                Cart
+                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+            </a>
 
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="weather">
-                    <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-                </NavLink>
-            </div>
+            <button class="btn btn-outline-dark ms-auto ms-md-0 me-3" type="button">Exit</button>
+
+            <a class="btn btn-outline-dark ms-auto ms-md-0 me-3" href="/login">Log in</a>
+
         </div>
-      
-    </nav>
-</div>
+    </div>
+</nav>
 
+
+
+@code{
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    
+}
+
+@* 
+<nav>
+    <div class="sidebar-container">
+        <a class="sidebar-brand" runat="server" href="#">E-Handel</a>
+        <ul class="sidebar-nav">
+            <a class="nav-item"><NavLink class="nav-link" href="dashboard">Dashboard</NavLink></a>
+            <a class="nav-item"><NavLink class="nav-link" href="usuarios">Customer</NavLink></a>
+            <a class="nav-item"><NavLink class="nav-link" href="categorias">Categories</NavLink></a>
+            <a class="nav-item"><NavLink class="nav-link" href="productos">Products</NavLink></a>
+            <a class="nav-item"><NavLink class="nav-link" href="catalogo">Store</NavLink></a>
+        </ul>
+        <span class="sidebar-text">admins@example.com</span>
+        <a class="btn btn-outline-light sidebar-btn" href="/cart">
+            <i class="bi-cart-fill me-1"></i>
+            Cart
+            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+        </a>
+        <button class="btn btn-outline-light sidebar-btn" type="button">Exit</button>
+        <a class="btn btn-outline-light sidebar-btn" href="/login">Log in</a>
+    </div>
+</nav>
+<style>
+    /* Overall page container */
+    .page {
+        display: flex;
+        height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background: linear-gradient(180deg, #6a11cb, #2575fc);
+        /*background-color: #f8f9fa;  Equivalent to bg-light in Bootstrap */
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+    }
+
+
+
+    /* Main content area */
+    .main-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    /* Top row within the main content */
+    .top-row {
+        padding: 16px;
+        background-color: #e9ecef; /* Light background for the top row */
+        text-align: right;
+    }
+
+    /* Content area within the main content */
+    .content {
+        flex-grow: 1;
+        padding: 16px;
+    }
+
+    /* Sidebar navigation link styles */
+    .sidebar .nav-link {
+        color: #d9d9d9;
+        text-decoration: none !important;
+        padding: 10px;
+        display: block;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+
+        .sidebar .nav-link:hover {
+            background-color: #e2e6ea; /* Hover effect for nav links */
+            color: #090909;
+        }
+
+    /* Sidebar text styles */
+    .sidebar .sidebar-text {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    /* Sidebar button styles */
+    .sidebar .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    /* Cart badge styles */
+    .badge {
+        margin-left: 5px;
+    }
+
+</style>
+ *@
